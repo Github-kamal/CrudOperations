@@ -11,13 +11,9 @@ import java.util.Optional;
 
 public interface CrudRepo extends JpaRepository<UserEntity, String> {
 
-
-
-
-
     @Transactional
     @Modifying
-    @Query(value = "UPDATE user_details SET name = :name, email = :email, gender = :gender WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE user_details SET user_name = :name, user_email = :email, user_gender = :gender WHERE user_id = :id", nativeQuery = true)
     int updateUserDetails(@Param("id") String id,
                           @Param("name") String name,
                           @Param("email") String email,
@@ -26,5 +22,3 @@ public interface CrudRepo extends JpaRepository<UserEntity, String> {
 
     Optional<UserEntity> findById(String id);
 }
-
-

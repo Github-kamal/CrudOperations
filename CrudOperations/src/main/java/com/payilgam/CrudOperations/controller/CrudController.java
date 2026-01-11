@@ -1,5 +1,7 @@
 package com.payilgam.CrudOperations.controller;
 
+import com.payilgam.CrudOperations.pojo.AcademicsPojo;
+import com.payilgam.CrudOperations.pojo.EmployeePojo;
 import com.payilgam.CrudOperations.pojo.UserPojo;
 import com.payilgam.CrudOperations.service.CrudService;
 import jakarta.validation.Valid;
@@ -35,5 +37,18 @@ public class CrudController
     public ResponseEntity<?> finduser(@RequestParam String id) {
         return ResponseEntity.ok(crudService.find(id));
     }
+
+    @ResponseBody
+    @PostMapping("/addEmployee")
+    public ResponseEntity<?> addEmployee(@Valid @RequestBody EmployeePojo pojo) {
+        return ResponseEntity.ok(crudService.addEmployee(pojo));
+    }
+
+
+    @PostMapping("/addEmpAcademics")
+    public ResponseEntity<?> addEmAcademics(@Valid @RequestBody AcademicsPojo pojo) {
+        return ResponseEntity.ok(crudService.addEmpAcademics(pojo));
+    }
+
 
 }
